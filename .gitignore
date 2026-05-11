@@ -1,0 +1,29 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Frontend
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.wrangler/
+/frontend/dev-proxy.config.json
+
+# Backend
+/backend/.venv/
+/backend/.pytest_cache/
+/backend/__pycache__/
+/backend/*.pyc
+/backend/config.toml
+/backend/app.db
+
+# Runtime data
+/data/images/
+/data/*.db
+
+# Python cache
+**/__pycache__/
+*.pyc

@@ -1,0 +1,26 @@
+[server]
+host = "0.0.0.0"
+port = 8000
+
+[security]
+access_token = "change-me"
+
+[upstream]
+base_url = "https://your-internal-api.example.com/v1"
+api_key = "sk-change-me"
+default_model = "gpt-image-2"
+timeout_seconds = 120
+
+[app]
+app_name = "Image Gen"
+api_mode = "images"
+static_dir = "../frontend/dist"
+supported_sizes = ["1024x1024", "1024x1536", "1536x1024"]
+
+[app.default_params]
+size = "1024x1024"
+quality = "auto"
+output_format = "png"
+
+[images]
+storage_dir = "../data/images"
