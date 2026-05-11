@@ -12,6 +12,7 @@ import type {
 import { DEFAULT_PARAMS } from './types'
 import { DEFAULT_SETTINGS, getActiveApiProfile, mergeImportedSettings, normalizeSettings } from './lib/apiProfiles'
 import { dismissAllTooltips } from './lib/tooltipDismiss'
+import { replaceImageMentionsForApi } from './lib/promptImageMentions'
 import {
   CURRENT_THUMBNAIL_VERSION,
   getImage,
@@ -850,7 +851,7 @@ export async function submitTask(options: { allowFullMask?: boolean } = {}) {
 
   try {
     const created = await createBackendTask(requestSettings, {
-      prompt: prompt.trim(),
+      prompt: replaceImageMentionsForApi(prompt.trim()),
       mode: orderedInputImages.length > 0 ? 'edit' : 'generate',
       params: normalizedParams,
       inputImages: inputFiles,
