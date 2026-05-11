@@ -1,6 +1,15 @@
+# Virtualenv and test cache
 .venv/
-__pycache__/
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+
+# Python cache
+__pycache__/
 *.pyc
+
+# Local runtime files
 app.db
 config.toml

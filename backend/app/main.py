@@ -24,6 +24,7 @@ def create_app(
     run_tasks_inline: bool = False,
 ) -> FastAPI:
     settings = settings or load_config()
+    settings.images.storage_dir.mkdir(parents=True, exist_ok=True)
     engine = create_engine_for_path(settings.project_root / "app.db")
     init_db(engine)
 

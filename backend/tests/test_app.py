@@ -94,3 +94,16 @@ def test_static_index_is_served_when_dist_exists(tmp_path: Path) -> None:
 
     assert response.status_code == 200
     assert "spa" in response.text
+
+
+def test_app_startup_creates_image_storage_dir(tmp_path: Path) -> None:
+    config_path = tmp_path / "config.toml"
+    write_config(config_path)
+    storage_dir = tmp_path / "images"
+
+    assert not storage_dir.exists()
+
+    create_app(load_config(config_path))
+
+    assert storage_dir.exists()
+    assert storage_dir.is_dir()

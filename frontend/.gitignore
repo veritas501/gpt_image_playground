@@ -1,4 +1,8 @@
+# Dependencies and build outputs
 node_modules/
 dist/
+coverage/
+
+# Local config / caches
 dev-proxy.config.json
-.wrangler/
+*.tsbuildinfo

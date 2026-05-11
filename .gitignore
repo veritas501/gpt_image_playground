@@ -6,24 +6,24 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Frontend
-/frontend/node_modules/
-/frontend/dist/
-/frontend/.wrangler/
-/frontend/dev-proxy.config.json
-
-# Backend
-/backend/.venv/
-/backend/.pytest_cache/
-/backend/__pycache__/
-/backend/*.pyc
-/backend/config.toml
-/backend/app.db
-
-# Runtime data
-/data/images/
-/data/*.db
+# Repo-level temp and caches
+*.log
+*.tmp
+*.swp
+*.swo
+.coverage
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+coverage/
+htmlcov/
 
 # Python cache
 **/__pycache__/
 *.pyc
+
+# Runtime data
+/data/
+
+# Frontend build/cache
+/frontend/*.tsbuildinfo
