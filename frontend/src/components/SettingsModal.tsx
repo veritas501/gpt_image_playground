@@ -80,7 +80,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
           <div>
             <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">应用设置</h2>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              当前前端只连接本站后端，不再暴露上游 API Key、Provider 和上游地址。
+              管理当前设备上的连接与使用习惯。
             </p>
           </div>
           <button
@@ -95,16 +95,16 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
         <div className="space-y-6 px-6 py-6">
           <section className="space-y-3">
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">访问口令</h3>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">连接口令</h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                每次请求都会通过 `X-Access-Token` 发送到后端，由后端再调用内网上游。
+                用于连接当前服务。填写后即可开始提交生成任务。
               </p>
             </div>
             <input
               type="password"
               value={settings.accessToken}
               onChange={(event) => setSettings({ accessToken: event.target.value })}
-              placeholder="输入后端访问口令"
+              placeholder="输入连接口令"
               className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition focus:border-gray-900 dark:border-white/15 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-white/40"
             />
           </section>
@@ -113,7 +113,7 @@ export default function SettingsModal({ onClose }: SettingsModalProps) {
             <div>
               <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">本地行为</h3>
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                这里只保留前端本地体验相关设置，不再维护上游连接配置。
+                调整当前设备上的输入与界面体验。
               </p>
             </div>
             <label className="flex items-start gap-3 rounded-2xl border border-gray-200 p-4 dark:border-white/10">
