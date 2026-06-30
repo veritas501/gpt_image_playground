@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import os
 from collections.abc import Callable
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, Response
@@ -25,7 +27,7 @@ def create_app(
 ) -> FastAPI:
     settings = settings or load_config()
     settings.images.storage_dir.mkdir(parents=True, exist_ok=True)
-    engine = create_engine_for_path(settings.project_root / "app.db")
+    engine = create_engine_for_path(_database_path(settings))
     init_db(engine)
 
     app = FastAPI(title=settings.app.app_name)
@@ -64,3 +66,10 @@ def _apply_no_store_headers(request: Request, response: Response) -> None:
     response.headers["Cache-Control"] = "no-store, max-age=0"
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "0"
+
+
+def _database_path(settings: Settings) -> Path:
+    env_path = os.getenv("IMAGE2_GEN_DB_PATH")
+    if env_path:
+        return Path(env_path).expanduser().resolve()
+    return settings.project_root / "app.db"

@@ -1,0 +1,17 @@
+services:
+  image2-gen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: image2-gen:local
+    environment:
+      IMAGE2_GEN_CONFIG: /config/config.toml
+      IMAGE2_GEN_DB_PATH: /data/app.db
+      HOST: 0.0.0.0
+      PORT: ${PORT:-8000}
+    ports:
+      - "${APP_PORT:-8000}:${PORT:-8000}"
+    volumes:
+      - ${IMAGE2_GEN_DATA_DIR:-./data}:/data
+      - ${IMAGE2_GEN_CONFIG_FILE:-./backend/config.docker.example.toml}:/config/config.toml:ro
+    restart: unless-stopped

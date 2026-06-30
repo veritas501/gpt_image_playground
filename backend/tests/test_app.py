@@ -107,3 +107,15 @@ def test_app_startup_creates_image_storage_dir(tmp_path: Path) -> None:
 
     assert storage_dir.exists()
     assert storage_dir.is_dir()
+
+
+def test_app_uses_env_database_path(tmp_path: Path, monkeypatch) -> None:
+    config_path = tmp_path / "config.toml"
+    write_config(config_path)
+    db_path = tmp_path / "data" / "app.db"
+    monkeypatch.setenv("IMAGE2_GEN_DB_PATH", str(db_path))
+
+    create_app(load_config(config_path))
+
+    assert db_path.exists()
+    assert not (tmp_path / "app.db").exists()

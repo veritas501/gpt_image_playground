@@ -1,0 +1,30 @@
+.git
+.gitignore
+.dockerignore
+
+# Local secrets and runtime state
+backend/config.toml
+data/
+
+# Python cache and test output
+**/__pycache__/
+*.pyc
+.venv/
+**/.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
